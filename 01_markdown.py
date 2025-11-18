@@ -1,5 +1,4 @@
 from azure.ai.documentintelligence import DocumentIntelligenceClient
-from azure.ai.documentintelligence.models import AnalyzeDocumentRequest
 from azure.core.credentials import AzureKeyCredential
 import os
 from dotenv import load_dotenv
@@ -16,7 +15,6 @@ client = DocumentIntelligenceClient(
 
 # 解析対象ファイル
 file_path = "./input/sample.pdf"
-# file_path = "sample.xlsx"
 
 with open(file_path, "rb") as f:
     poller = client.begin_analyze_document(
@@ -26,6 +24,5 @@ with open(file_path, "rb") as f:
     )
 
 result = poller.result()
-# print(result.content)
 with open("./output/result.md", "w", encoding="utf-8") as wf:
     wf.write(result.content)
