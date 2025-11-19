@@ -16,7 +16,7 @@ with open("./input/sample.pdf", "rb") as f:
     poller = client.begin_analyze_document(
         model_id="prebuilt-layout",
         body=f,
-        output=["figures"],  # request figure crops so we can fetch them
+        output=["figures"],
     )
     result = poller.result()
 
